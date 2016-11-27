@@ -47,8 +47,8 @@ $(TEST_PROGS): $(TEST_OBJS) ../pthread.o
 
 #Special rules for OpenMP programs
 test_omp: test_omp.o
-	$(CPP)  -static -o $@  $@.o -lgomp ../pthread.o -lgomp
-	$(CPP)  -static -o $@_p  $@.o -lgomp -lpthread
+	$(CPP)  -static -o $@  $@.o -lgomp ../pthread.o -lgomp -ldl
+	$(CPP)  -static -o $@_p  $@.o -lgomp -lpthread -ldl
 
 test_omp.o: test_omp.cpp ../pthread.o
 	$(CPP) $(CPPFLAGS) -fopenmp -c -o $@ $*.cpp
